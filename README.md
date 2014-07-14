@@ -1,6 +1,6 @@
 # lgfu  #
 
-<h1><img src="http://images.apple.com/support/assets/images/products/airport/hero_airport_wifi.png" valign="middle"/></h1>
+<h1><img src="http://store.apple.com/Catalog/US/Images/pdp-guest-network-badge.png" valign="middle"/></h1>
 
 About
 --------
