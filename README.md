@@ -13,7 +13,7 @@ License: [GNU GPL v3 or later][1]
 Usage Instructions
 ---------
 
-chmod +x ./lgfu.rb
+chmod +x ./lgfu.rb<br>
 ./lgfu.rb myusernme
 
 Notes relating to using the core script within another system
