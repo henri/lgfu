@@ -19,7 +19,16 @@ chmod +x ./lgfu.rb<br>
 Notes relating to using the core script within another system
 ---------
 
-  -  There are wrapper scripts located within the extras directory.
+  -  There are notes and wrapper script(s) located within the extras directory.
+  	- "notes_on_commands_used_within_script.txt" provides a break down of various commands used within the script.
+	  - Check if a user is a member of a group 
+	  - List all groups
+	  - List all users
+	  - List all users in a group (probably not all of them)
+	  - Obtain User Unique ID 
+	  - Obtain User Short Name
+	  - Obtain Group Primary ID 
+	  - Obtain Group Short Name
   	- "list_users_with_groups_for_group.rb" will (when provided with a group as the first argument) list all users in that group and also all the groups that user is a part of within the open directory.
   -  Should you wish to use this script it is important that you adhear to the licence agreement.
 

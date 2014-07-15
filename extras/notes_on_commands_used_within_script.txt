@@ -1,5 +1,15 @@
-# Check if they are a member
-dsmemberutil checkmembership -u 10739 -g 1054
+# Copyright 2014
+# Henri Shustak
+# Licenced under the GNU GPL v3
+#
+# If you are able to improve the effecncy of this scrip then fork this project and 
+# submit a pull request on git hub : http://www.lucid.technology/tools/osx/lgfu
+
+# These notes assume a very basic OS X open directory configuration. It is possible that these commands will 
+# require modification in order to work on your specific open directory configuration.
+
+# Check if a user is a member of a group 
+dsmemberutil checkmembership -u 1234 -g 5678
 
 # List all groups
 dscl localhost -list /LDAPv3/127.0.0.1/Groups
@@ -7,8 +17,8 @@ dscl localhost -list /LDAPv3/127.0.0.1/Groups
 # List all users
 dscl localhost -list /LDAPv3/127.0.0.1/Users
 
-# List all users in a group
-dscl localhost -read "/LDAPv3/127.0.0.1/Groups/staffusers" Member | awk -F "Member: " '{print $2}'
+# List all users in a group (probably not all of them)
+dscl localhost -read "/LDAPv3/127.0.0.1/Groups/groupname" Member | awk -F "Member: " '{print $2}'
 
 # Obtain User Unique ID 
 dscl localhost -read "/LDAPv3/127.0.0.1/Users/username UniqueID" | awk '{print $2}'
@@ -17,7 +27,7 @@ dscl localhost -read "/LDAPv3/127.0.0.1/Users/username UniqueID" | awk '{print $
 dscl localhost -read "/LDAPv3/127.0.0.1/Users/username" RecordName | tr -d "\n" | awk -F "RecordName: " '{print $2}'
 
 # Obtain Group Primary ID 
-dscl localhost -read "/LDAPv3/127.0.0.1/Groups/StaffUsers" PrimaryGroupID | awk '{print $2}'
+dscl localhost -read "/LDAPv3/127.0.0.1/Groups/groupname" PrimaryGroupID | awk '{print $2}'
 
 # Obtain Group Short Name
-dscl localhost -read "/LDAPv3/127.0.0.1/Groups/StaffUsers" RecordName | tr -d "\n" | awk -F "RecordName: " '{print $2}'
+dscl localhost -read "/LDAPv3/127.0.0.1/Groups/groupname" RecordName | tr -d "\n" | awk -F "RecordName: " '{print $2}'
