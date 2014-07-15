@@ -18,8 +18,10 @@ chmod +x ./lgfu.rb<br>
 
 Notes relating to using the core script within another system
 ---------
- 
-Finally, should you wish to use this script it is important that you adhear to the licence agreement.
+
+  -  There are wrapper scripts located within the extras directory.
+  	- "list_users_with_groups_for_group.rb" will (when provided with a group as the first argument) list all users in that group and also all the groups that user is a part of within the open directory.
+  -  Should you wish to use this script it is important that you adhear to the licence agreement.
 
 
   [1]: www.gnu.org/copyleft/gpl.html
