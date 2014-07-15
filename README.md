@@ -16,7 +16,7 @@ Usage Instructions
 chmod +x ./lgfu.rb<br>
 ./lgfu.rb myusernme
 
-Project Overview and Notes.
+Project Overview and Notes
 ---------
 
   -  There are notes and wrapper script(s) located within the extras directory.
