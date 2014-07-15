@@ -17,6 +17,8 @@
 # Note this script will not support the following : 
 #   - Group lookups for a user with a UID of 0 will fail
 #   - Any lookups for groups with a GID of 0 will also fail
+#   - May not find all users within a group an additional script which
+#     uses the dsmemberutil command would be required in order to know for sure.
 
 if ARGV.length != 1 
 	puts "Usage : list_users_with_grousp_for_group.rb groupname" 

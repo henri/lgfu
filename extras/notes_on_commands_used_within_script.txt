@@ -17,7 +17,7 @@ dscl localhost -list /LDAPv3/127.0.0.1/Groups
 # List all users
 dscl localhost -list /LDAPv3/127.0.0.1/Users
 
-# List all users in a group (probably not all of them)
+# List all users in a group (probably not all of them - write a script to use the dsmemberutil command to be sure)
 dscl localhost -read "/LDAPv3/127.0.0.1/Groups/groupname" Member | awk -F "Member: " '{print $2}'
 
 # Obtain User Unique ID 
