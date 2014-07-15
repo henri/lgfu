@@ -9,13 +9,17 @@
 #         Chances are you will want to imrpvoe the output for your requirements. Also, this algorhtem is 
 #         mighty slow. If you are able to improve the effecncy of this scrip then fork this project and 
 #         submit a pull request on git hub : http://www.lucid.technology/tools/osx/lgfu
-
-# Version History
-#  1.0 : innitial relsase.
-
+#
 # Note this script will not support the following : 
 #   - Group lookups for a user with a UID of 0 will fail
 #   - Any lookups for groups with a GID of 0 will also fail
+#
+# Other important notes / points to keep in mind :
+#   - Users with multiple short names will have all shortnames listed on the output.
+#
+# Version History
+#  1.0 : innitial relsase.
+#
 
 if ARGV.length != 1 
 	puts "Usage : lgfu.rb username" 
