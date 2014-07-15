@@ -1,0 +1,23 @@
+# Check if they are a member
+dsmemberutil checkmembership -u 10739 -g 1054
+
+# List all groups
+dscl localhost -list /LDAPv3/127.0.0.1/Groups
+
+# List all users
+dscl localhost -list /LDAPv3/127.0.0.1/Users
+
+# List all users in a group
+dscl localhost -read "/LDAPv3/127.0.0.1/Groups/staffusers" Member | awk -F "Member: " '{print $2}'
+
+# Obtain User Unique ID 
+dscl localhost -read "/LDAPv3/127.0.0.1/Users/username UniqueID" | awk '{print $2}'
+
+# Obtain User Short Name
+dscl localhost -read "/LDAPv3/127.0.0.1/Users/username" RecordName | tr -d "\n" | awk -F "RecordName: " '{print $2}'
+
+# Obtain Group Primary ID 
+dscl localhost -read "/LDAPv3/127.0.0.1/Groups/StaffUsers" PrimaryGroupID | awk '{print $2}'
+
+# Obtain Group Short Name
+dscl localhost -read "/LDAPv3/127.0.0.1/Groups/StaffUsers" RecordName | tr -d "\n" | awk -F "RecordName: " '{print $2}'

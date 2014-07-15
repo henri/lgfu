@@ -8,7 +8,7 @@
 #         the open directoy on a system. At present it only supports mac OS X open direcotry. Tested on 10.8
 #         Chances are you will want to imrpvoe the output for your requirements. Also, this algorhtem is 
 #         mighty slow. If you are able to improve the effecncy of this scrip then fork this project and 
-#         submit a pull request on git hub : http://www.lucid.technoogy/tools/osx/lgfu
+#         submit a pull request on git hub : http://www.lucid.technology/tools/osx/lgfu
 
 # Version History
 #  1.0 : innitial relsase.
@@ -18,8 +18,9 @@
 #   - Any lookups for groups with a GID of 0 will also fail
 
 if ARGV.length != 1 
-	puts "Usage : list_groups_for_user.rb username" 
+	puts "Usage : lgfu.rb username" 
 	puts "         # note that this script will not support a GID or UID with 0"
+  puts "         # expected output example : username, group1, group2"
 	exit -1
 end
 
