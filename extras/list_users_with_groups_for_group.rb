@@ -26,13 +26,15 @@ if ARGV.length != 1
   puts "         # expected output example : username, group1, group2"
   puts "                                     username, group3, group1"
   puts "                                     etc..."
+  puts ""
+  puts " Note : This wrapper script may not find all users in a specified group"
 	exit -1
 end
 
 # Internal varibles
 group = ARGV[0]
 
-# provides staff with their membership to groups as shortnames
+# who is a member of the the group, note see the issues relating to this apparoch within the assosiated "notes_on_commands_used_within_script.txt" file.
 group_members = `dscl localhost -read "/LDAPv3/127.0.0.1/Groups/#{group}" Member | awk -F "Member: " '{print $2}'`.split(" ")
 
 # other varibles
