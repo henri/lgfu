@@ -1,4 +1,4 @@
-# lgfu  #
+# lgfu  (list groups for users) #
 
 <h1><img src="http://store.apple.com/Catalog/US/Images/pdp-guest-network-badge.png" valign="middle"/></h1>
 
