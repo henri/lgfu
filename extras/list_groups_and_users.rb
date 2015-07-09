@@ -16,17 +16,11 @@
 # Version History
 #  1.0 : innitial relsase.
 
-# Note :  This script may not print all members due to the command which is being used. Check with 
-#         <http://www.lucid.technology/tools/osx/lgfu/>, then go to './extras/notes_on_commands_used_within_script.txt' 
-#         and check the notes relating to the specific command whcih is used within this script to extract the group members
-#         It is important to understand the limitations of the approach used and the suggested approach within that .txt file.
-#
-
 od_groups = `dscl localhost -list /LDAPv3/127.0.0.1/Groups`.split("\n")
 
 od_groups.each do |group|
 
-	# find group members
+ # who is a member of the the group, note see the issues relating to this apparoch within the assosiated "notes_on_commands_used_within_script.txt" file.
 	group_members = `dscl localhost -read "/LDAPv3/127.0.0.1/Groups/#{group}" Member 2> /dev/null | awk -F "Member: " '{print $2}'`.split(" ")
 	
 	# build output string which will include name of group and the memebers
