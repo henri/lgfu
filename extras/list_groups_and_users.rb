@@ -15,13 +15,15 @@
 
 # Version History
 #  1.0 : innitial relsase.
+#  1.1 : added dscl_prefix_path for possible use on non-opendir system
 
-od_groups = `dscl localhost -list /LDAPv3/127.0.0.1/Groups`.split("\n")
+dscl_prefix_path = "/LDAPv3/127.0.0.1" #switch to /Local/Default/ if you are not running on opendir (untested)
+od_groups = `dscl localhost -list #{dscl_prefix_path}/Groups`.split("\n")
 
 od_groups.each do |group|
 
  # who is a member of the the group, note see the issues relating to this apparoch within the assosiated "notes_on_commands_used_within_script.txt" file.
-	group_members = `dscl localhost -read "/LDAPv3/127.0.0.1/Groups/#{group}" Member 2> /dev/null | awk -F "Member: " '{print $2}'`.split(" ")
+	group_members = `dscl localhost -read "#{dscl_prefix_path}/Groups/#{group}" Member 2> /dev/null | awk -F "Member: " '{print $2}'`.split(" ")
 	
 	# build output string which will include name of group and the memebers
 	output_line = ""

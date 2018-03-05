@@ -19,6 +19,7 @@
 #
 # Version History
 #  1.0 : innitial relsase.
+#  1.1 : added dscl_prefix_path for possible use on non-opendir system
 #
 
 if ARGV.length != 1 
@@ -30,12 +31,13 @@ end
 
 # Internal varibles
 user = ARGV[0]
-uid = `dscl localhost -read "/LDAPv3/127.0.0.1/Users/#{user}" UniqueID | awk '{print $2}'`.chomp
+dscl_prefix_path = "/LDAPv3/127.0.0.1" #switch to /Local/Default/ if you are not running on opendir (untested)
+uid = `dscl localhost -read "/Users/#{user}" UniqueID | awk '{print $2}'`.chomp
 uid_lookup_return_code = $?.exitstatus
-user_shortname = `dscl localhost -read "/LDAPv3/127.0.0.1/Users/#{user}" RecordName | tr -d "\n" | awk -F "RecordName: " '{print $2}'`.chomp
+user_shortname = `dscl localhost -read "#{dscl_prefix_path}/Users/#{user}" RecordName | tr -d "\n" | awk -F "RecordName: " '{print $2}'`.chomp
 user_shotname_lookup_return_code = $?.exitstatus
 users_groups = []
-od_groups = `dscl localhost -list /LDAPv3/127.0.0.1/Groups`.split("\n")
+od_groups = `dscl localhost -list #{dscl_prefix_path}/Groups`.split("\n")
 output_string = "#{user_shortname.to_s}"
 exit_status = 0
 
@@ -44,9 +46,9 @@ if (((uid != 0) && (uid_lookup_return_code == 0)) && (("#{user_shortname}" != ""
         # check the user for each group
         od_groups.each  do |group|
                 user_is_member_of_group = false
-                gid = `dscl localhost -read "/LDAPv3/127.0.0.1/Groups/#{group}" PrimaryGroupID | awk '{print $2}'`.chomp
+                gid = `dscl localhost -read "#{dscl_prefix_path}/Groups/#{group}" PrimaryGroupID | awk '{print $2}'`.chomp
                 gid_lookup_return_code = $?.exitstatus
-                group_shortname = `dscl localhost -read "/LDAPv3/127.0.0.1/Groups/#{group}" RecordName | tr -d "\n" | awk -F "RecordName: " '{print $2}'`.chomp
+                group_shortname = `dscl localhost -read "#{dscl_prefix_path}/Groups/#{group}" RecordName | tr -d "\n" | awk -F "RecordName: " '{print $2}'`.chomp
                 group_shortname_lookup_return_code = $?.exitstatus
                 if (((gid != 0) && (gid_lookup_return_code == 0)) && (("#{group_shortname}" != "") && (group_shortname_lookup_return_code == 0)))
                         check_membership_result = `dsmemberutil checkmembership -u #{uid} -g #{gid}`.chomp
